@@ -1,3 +1,7 @@
+
+{% load static %}
+{% static "images" as baseUrl %}
+
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +15,7 @@
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     <title>Explore with us</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <style>
         .carousel-item {
             height: 80vh;
@@ -84,7 +88,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active" data-interval='5000'>
-                <div class="overlay-image" style="background-image: url(./home_slider0.jpg);"></div>
+                <div class="overlay-image" style="background-image: url({%  static 'images/home_slider0.jpg' %});"></div>
                 <div class="container">
                     <h1>example headline</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
@@ -93,7 +97,7 @@
                 </div>
             </div>
             <div class="carousel-item" data-interval='3000'>
-                <div class="overlay-image" style="background-image: url(./home_slider1.jpg);"></div>
+                <div class="overlay-image" style="background-image: url({%  static 'images/home_slider1.jpg' %});"></div>
                 <div class="container">
                     <h1>iuowehfiosadhfio fhkiujashdfiou</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
@@ -102,7 +106,7 @@
                 </div>
             </div>
             <div class="carousel-item" data-interval='3000'>
-                <div class="overlay-image" style="background-image: url(./home_slider2.jpg);"></div>
+                <div class="overlay-image" style="background-image: url({% static 'images/home_slider2.jpg' %} );"></div>
                 <div class="container">
                     <h1>example headline</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
@@ -120,6 +124,7 @@
             <div class="destination text-center">
                 <h2>Destination</h2>
                 <form class="form-inline my-2 my-lg-0">
+                    {% csrf_token %}
                     <div class="col text-center">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -129,68 +134,12 @@
             <div class="row row-cols-md-2 row-cols-lg-3">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
+                        <img src="{%  static 'images/home_slider0.jpg' %}" class="card-img-top" alt="...">
+                        <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./home_slider0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod
-                                porro error totam libero hic cumque harum, ea obcaecati voluptas nihil! quick example
-                                text to build on the card title and make up the bulk of the card's content.</p>
-                            <h5 class="card-title">$400 - $600</h5>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
@@ -207,7 +156,8 @@
     <footer class="page-footer font-small blue">
         <div class="text-center ">
             <h3>Subscribe to our Newslater</h3>
-            <form class="form-inline my-2 my-lg-0">
+            <form action="subscribe" method="post" class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
                 <div class="col text-center">
                     <input class="form-control mr-sm-2" type="name" placeholder="Name" aria-label="Search">
                     <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Search">
@@ -235,16 +185,5 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
-    <script src="{%  static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{%  static 'styles/bootstrap4/popper.js' %}"></script>
-    <script src="{%  static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
-    <script src="{%  static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
-    <script src="{%  static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
-    <script src="{%  static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
-    <script src="{%  static 'plugins/easing/easing.js' %}"></script>
-    <script src="{%  static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
-    <script src="{%  static 'js/custom.js' %}"></script>
-
-</body>
 
 </html>
