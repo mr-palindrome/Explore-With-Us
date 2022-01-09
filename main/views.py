@@ -1,19 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import Destination, USER_subs
-# import datetime
-from datetime import datetime
 import pymongo
 from .Connect import collection_sub,collection_dest
 # Create your views here.
 
 
 def index(request):
-    dests = Destination.objects.all()
-    now = datetime.now()
-    current_year = now.year
-    current_month = now.month
+    dests = Destination.objects.all()[:6]
     return render(request, "index.html", {
-        'destinations': dests
+        'destinations': dests,
     })
 
 

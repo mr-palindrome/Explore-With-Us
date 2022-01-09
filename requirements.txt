@@ -4,3 +4,4 @@ pytz
 dnspython
 pymongo==3.12.1
 djongo
+pillow

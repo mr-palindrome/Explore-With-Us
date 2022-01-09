@@ -44,6 +44,32 @@
             background-size: cover;
             opacity: 0.5;
         }
+
+        #parent {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #parent p.collapse:not(.show) {
+            height: 42px !important;
+            overflow: hidden;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #parent p {
+            min-height: 42px !important;
+        }
+
+        #parent a.collapsed:after {
+            content: 'Read More';
+        }
+
+        #parent a:not(.collapsed):after {
+            content: 'Read Less';
+        }
     </style>
 </head>
 
@@ -131,20 +157,37 @@
                     </div>
                 </form>
             </div>
+
+
             <div class="row row-cols-md-2 row-cols-lg-3">
+                {% for dest in destinations %}
                 <div class="col">
+
                     <div class="card" style="width: 18rem;">
-                        <img src="{%  static 'images/home_slider0.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{{ dest.image.url }}" class="card-img-top" alt="...">
+
+                        {% if dest.offer %}
                         <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+                        {% endif %}
+
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title font-weight-bold">{{ dest.name }}</h5>
+                            <div id="parent">
+                                <p class="collapse card-text comment more" id="collapseParent">{{ dest.desc }}</p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseParent" aria-expanded="false"
+                                    aria-controls="collapseParent"></a>
+                            </div>
+                            <h5 class="card-title">${{ dest.price_from }} - ${{ dest.price_to }}</h5>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
+
                 </div>
+
+                {%  endfor %}
             </div>
+
+
             <div class="seemore">
                 <button type="button" class="btn btn-primary">See more</button>
             </div>
@@ -159,8 +202,8 @@
             <form action="subscribe" method="post" class="form-inline my-2 my-lg-0">
                 {% csrf_token %}
                 <div class="col text-center">
-                    <input class="form-control mr-sm-2" type="name" placeholder="Name" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Search">
+                    <input class="form-control mr-sm-2" name="name" type="name" placeholder="Name" aria-label="Search">
+                    <input class="form-control mr-sm-2" name="email" type="email" placeholder="Email" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
                 </div>
             </form>
@@ -184,6 +227,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
+
 
 
 </html>
