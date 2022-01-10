@@ -50,8 +50,7 @@ def search(request):
         )
         for i in add_result:
             payload.append(i['name'])
-    return JsonResponse({
-        'status': 200, 'data': payload
+    return JsonResponse({'data': payload
     })
 
 
