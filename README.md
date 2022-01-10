@@ -1,7 +1,7 @@
 # Explore With Us
 ## Overveiw
 Explore With Us is a vacation destination catalog website build with Django, Bootstrap and MongoDB Atlas.
-I created this website to take part in MongoDB Atlas Hackathon hosted by DEV.to
+I created this website to take part in MongoDB Atlas Hackathon hosted by [DEV.to](https://dev.to/devteam/announcing-the-mongodb-atlas-hackathon-on-dev-4b6m)
 
 
 ### Tech I used:</h4>
@@ -51,7 +51,7 @@ Then in backend I created Connect.py in main folder to connect with the cluster 
 So that once the user starts searching particular destination it will suggest them destinations automatically.
 
 
-<img src="./readme_img/demo.gif" height="260px">
+<img src="./readme_img/demo.gif" height="260px" alt="demo">
 
 _views.py>search :_
 
@@ -112,15 +112,15 @@ pip3 install -r requirements.txt
 Create a Django SECRET_KEY using following command in python3 terminal:
 ```
 python3
->>>from django.core.management.utils import get_random_secret_key  
->>>>get_random_secret_key()
+>>> from django.core.management.utils import get_random_secret_key  
+>>> get_random_secret_key()
 ```
 Create a .env file in explore_with_us folder to store all the environment and secret keys, like Django SECRET_KEY, mongoDB connection string.
 
 But, for demonstration purpose you don't have to create your own cluster, I have provided my own connection string to access all the data present in my Atlas cluster database(AtlasHackathon>Project_data)
 
 
-<img src="./readme_img/clusterimage.png" alt="MyCluster">
+<img src="./readme_img/clusterImage.png" alt="MyCluster">
 
 
 Now store the Django SECRET_KEY and my connection string in .env, it will look like:
