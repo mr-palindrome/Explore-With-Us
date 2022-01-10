@@ -16,6 +16,8 @@
 
     <title>Explore with us</title>
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+
+	<link rel="stylesheet" href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css" />
     <style>
         .carousel-item {
             height: 80vh;
@@ -75,7 +77,7 @@
 
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="#">Explore With Us</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,22 +87,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#destinaiton">Destinatinos</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#subscribe">Subscribe</a>
                     </li>
                 </ul>
             </div>
@@ -114,30 +107,24 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active" data-interval='5000'>
-                <div class="overlay-image" style="background-image: url({%  static 'images/home_slider0.jpg' %});"></div>
-                <div class="container">
-                    <h1>example headline</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
-                        explicabo, atque, ab architecto expedita ad maiores eos tempore debitis!</p>
-                    <a href="#" class="btn btn-lg btn-primary">sign up today</a>
-                </div>
-            </div>
-            <div class="carousel-item" data-interval='3000'>
                 <div class="overlay-image" style="background-image: url({%  static 'images/home_slider1.jpg' %});"></div>
                 <div class="container">
-                    <h1>iuowehfiosadhfio fhkiujashdfiou</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
-                        explicabo, atque, ab architecto expedita ad maiores eos tempore debitis!</p>
-                    <a href="#" class="btn btn-lg btn-primary">sign up today</a>
+                    <h1 class="font-weight-bold display-2" >Explore With Us</h1>
+                    <p class="display-4">Your personal destination picker!</p>
                 </div>
             </div>
             <div class="carousel-item" data-interval='3000'>
-                <div class="overlay-image" style="background-image: url({% static 'images/home_slider2.jpg' %} );"></div>
+                <div class="overlay-image" style="background-image: url({%  static 'images/home_slider2.jpg' %});"></div>
                 <div class="container">
-                    <h1>example headline</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sequi tenetur voluptate modi
-                        explicabo, atque, ab architecto expedita ad maiores eos tempore debitis!</p>
-                    <a href="#" class="btn btn-lg btn-primary">sign up today</a>
+                    <h1 class="font-weight-bold display-2">Explore With Us</h1>
+                    <p class="display-4">Your personal destination picker!</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-interval='3000'>
+                <div class="overlay-image" style="background-image: url({% static 'images/home_slider0.jpg' %} );"></div>
+                <div class="container">
+                    <h1 class="font-weight-bold display-2">Explore With Us</h1>
+                    <p class="display-4">Your personal destination picker!</p>
                 </div>
             </div>
         </div>
@@ -145,17 +132,22 @@
 
 
 
-    <div class="container-fluid outside m-0">
+    <div class="container-fluid outside m-0" id="destinaiton">
         <div class="container inside position-relative">
             <div class="destination text-center">
-                <h2>Destination</h2>
-                <form class="form-inline my-2 my-lg-0">
-                    {% csrf_token %}
+                <div class="lead">simply amazing places</div>
+                <h2>Destinations</h2>
+                <form id="form" method="post" action="/dests/" class="form-inline my-2 my-lg-0">
+				    {% csrf_token %}
                     <div class="col text-center">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				        <div id="autocomplete" class="autocomplete">
+				            <input id="autocomplete_in" class="autocomplete form-control mr-sm-2" type="text" name="dest_name" placeholder="Search Destination"
+					aria-label="Search">
+				            <ul class="autocomplete-result-list"></ul>
+			            </div>
+				    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="myFunction()">Search</button>
                     </div>
-                </form>
+		        </form>
             </div>
 
 
@@ -178,7 +170,6 @@
                                     aria-controls="collapseParent"></a>
                             </div>
                             <h5 class="card-title">${{ dest.price_from }} - ${{ dest.price_to }}</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
 
@@ -186,17 +177,12 @@
 
                 {%  endfor %}
             </div>
-
-
-            <div class="seemore">
-                <button type="button" class="btn btn-primary">See more</button>
-            </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <!-- Footer -->
-    <footer class="page-footer font-small blue">
+    <footer class="page-footer font-small blue" id="subscribe">
         <div class="text-center ">
             <h3>Subscribe to our Newslater</h3>
             <form action="subscribe" method="post" class="form-inline my-2 my-lg-0">
@@ -227,6 +213,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+
+	<script>
+        let input = document.querySelector('#autocomplete_in');
+        document.querySelector('#form').addEventListener('submit', function(e) {
+            if (input.value === '') {
+                this.setAttribute('action', "/dests/_");
+            } else {
+                this.setAttribute('action', "/dests/" + `${document.querySelector('input[name=dest_name]').value}`);
+            }
+        });
+    </script>
+	<script>
+		new Autocomplete('#autocomplete', {
+			search: input => {
+				console.log(input)
+				const url = `/search/?address=${input}`
+				return new Promise(resolve => {
+					fetch(url)
+						.then(response => response.json())
+						.then(data => {
+							resolve(data.data)
+						})
+				})
+			},
+			onSubmit: result => {
+				window.open(`/dests/${result}`)
+			}
+		})
+	</script>
 
 
 

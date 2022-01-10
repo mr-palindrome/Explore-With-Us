@@ -11,6 +11,8 @@ urlpatterns = [
     # UUID: universally unique identifier like username
     path('', views.index),
     path('subscribe', views.sub, name='sub'),
+    path('search/', views.search),
+    path('dests/<str:destname>', views.result),
 
 ]
 
