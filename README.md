@@ -1,5 +1,5 @@
 # Explore With Us
-## Overveiw
+## Overview
 Explore With Us is a vacation destination catalog website build with Django, Bootstrap and MongoDB Atlas.
 I created this website to take part in MongoDB Atlas Hackathon hosted by [DEV.to](https://dev.to/devteam/announcing-the-mongodb-atlas-hackathon-on-dev-4b6m)
 
