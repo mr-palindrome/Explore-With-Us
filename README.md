@@ -3,8 +3,8 @@
 Explore With Us is a vacation destination catalog website build with Django, Bootstrap and MongoDB Atlas.
 I created this website to take part in MongoDB Atlas Hackathon hosted by DEV.to
 
-<br>
-<h4>Tech I used:</h4>
+
+### Tech I used:</h4>
 <ul>
     <li>HTML,CSS,JS and Bootstrap 4</li>
     <li>Django</li>
@@ -16,7 +16,7 @@ I created this website to take part in MongoDB Atlas Hackathon hosted by DEV.to
 </ul>
 
 
-## How I used Atlas Search feature:
+### How I used Atlas Search feature:
 I used MongoDB Atlas search to implement the autocomplete feature in my "Search Destination" Search Bar.
 So that users can easily find their suitable destination within few seconds without scrolling.
 First I made a search index for my collection "main_destination".
@@ -78,7 +78,7 @@ add_result = collection.aggregate(
 This function build a pipeline that searches using the address parameter automatically from the collection as defined in MongoDB Atlas search index as I demoed at the top in my demo video.
 
 
-## How you will see this project
+### How you will see this project
 
 #### **STEP 1:**
 Fork this repo and clone it using:
