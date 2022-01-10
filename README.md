@@ -2,13 +2,6 @@
 ## Overveiw
 Explore With Us is a vacation destination catalog website build with Django, Bootstrap and MongoDB Atlas.
 I created this website to take part in MongoDB Atlas Hackathon hosted by DEV.to
-<br>
-<br>
-<!-- <video controls autoplay>
-   <source src="./readme_img/demo.mp4" alt='Demo video' >
-</video> -->
-<img src="./readme_img/demo.gif" height="260px">
-<br>
 
 <br>
 <h4>Tech I used:</h4>
@@ -22,16 +15,13 @@ I created this website to take part in MongoDB Atlas Hackathon hosted by DEV.to
 </li>
 </ul>
 
-## Submission Category:
-The category is **"Choose Your Own Adventure"**. It could be "E-Commerce Creation" but this is not an e-commerce store or any product catalog.  
-
-Link for the source code: https://github.com/mr-palindrome/Explore-With-Us
-
 
 ## How I used Atlas Search feature:
 I used MongoDB Atlas search to implement the autocomplete feature in my "Search Destination" Search Bar.
-First I made a search index for my collection "main_destination"
-<img src="./readme_img/databaseAndCollection.png" alt="myCollection">
+So that users can easily find their suitable destination within few seconds without scrolling.
+First I made a search index for my collection "main_destination".
+<br>
+
 
 The Search Index I used:
 ``` 
@@ -52,13 +42,16 @@ The Search Index I used:
   }
 }
 ```
+__All the collection in Project_data database:__
+<img src="./readme_img/databaseAndCollection.png" alt="myCollection">
 
-And then in backend I created Connect.py in main folder to connect with the cluster for searching the index from views.py search action. using pymongo package built for python to connect with MongoDB, as djongo does not support aggregate function.
+
+Then in backend I created Connect.py in main folder to connect with the cluster for searching the index from views.py search action. using pymongo package built for python to connect with MongoDB, as djongo does not support aggregate function.
 
 So that once the user starts searching particular destination it will suggest them destinations automatically.
 
-<img src="./readme_img/search_demo.png" alt="search_demo">
 
+<img src="./readme_img/demo.gif" height="260px">
 
 _views.py>search :_
 
