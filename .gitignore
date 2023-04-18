@@ -2,3 +2,4 @@
 */*/__pycache__/
 .idea/
 explore_with_us/.env
+.env
