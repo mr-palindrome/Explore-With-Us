@@ -1,5 +1,5 @@
 asgiref==3.6.0
-Django==4.0.10
+Django==4.2.17
 django-mongoengine==0.5.4
 djongo==1.3.6
 dnspython==2.3.0
